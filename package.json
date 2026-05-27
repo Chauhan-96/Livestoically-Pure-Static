@@ -1,0 +1,16 @@
+{
+  "name": "livestoically",
+  "version": "1.0.0",
+  "description": "Livestoically - Stoic philosophy for overthinkers",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "preview": "cd frontend && npm run preview"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {}
+}
