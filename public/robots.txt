@@ -1,0 +1,32 @@
+# Livestoically — robots.txt
+# Instructions for search engine crawlers
+
+User-agent: *
+Allow: /
+Allow: /articles/
+Allow: /pillars/
+Allow: /membership
+Allow: /start
+Allow: /api/
+
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /.env
+Disallow: /private/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://livestoically.com/api/sitemap
+
+# Crawl delay (be nice to servers)
+Crawl-delay: 1
+
+# Rules for specific bots
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
