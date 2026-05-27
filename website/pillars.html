@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Pillars — Livestoically</title>
+  <meta name="description" content="9 pillars of practical Stoic philosophy. Start with the one that's most alive for you right now." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://livestoically.com/pillars/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://livestoically.com/pillars/" />
+  <meta property="og:title"       content="All Pillars — Livestoically" />
+  <meta property="og:description" content="9 pillars of practical Stoic philosophy" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/global.css" />
+  <link rel="stylesheet" href="styles/print.css" media="print" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "All Pillars",
+    "description": "All 9 pillars of Livestoically",
+    "url": "https://livestoically.com/pillars/",
+    "isPartOf": { "@type": "WebSite", "name": "Livestoically", "url": "https://livestoically.com" }
+  }
+  </script>
+
+  <style>
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--text);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      margin: 6px 0;
+      transition: all 0.3s ease;
+    }
+
+    .nav-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .nav-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .nav-mobile {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 20px 24px;
+      list-style: none;
+      z-index: 99;
+    }
+
+    .nav-mobile.active {
+      display: block;
+    }
+
+    .nav-mobile li {
+      margin-bottom: 16px;
+    }
+
+    .nav-mobile a {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.3s ease;
+      display: block;
+    }
+
+    .nav-mobile a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none !important;
+      }
+
+      .nav-cta {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Livestoically</a>
+    <ul class="nav-links">
+      <li><a href="pillars.html" class="active">Pillars</a></li>
+      <li><a href="start.html">Start here</a></li>
+      <li><a href="membership.html">Membership</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-cta" style="display:flex;align-items:center;gap:12px">
+      <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">⌕</button>
+      <a href="membership.html" class="btn btn-primary btn-sm">Join</a>
+    </div>
+  </div>
+  <ul class="nav-mobile" id="nav-mobile">
+    <li><a href="pillars.html">Pillars</a></li>
+    <li><a href="start.html">Start here</a></li>
+    <li><a href="membership.html">Membership</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">9 Pillars</div>
+    <h1>Every Angle of a Human Life</h1>
+    <p>Each pillar is a lens. Start with the one that's most alive for you right now. You don't need to read them in order.</p>
+  </div>
+</section>
+
+<!-- Pillars grid -->
+<section class="section">
+  <div class="section-inner">
+    <div class="pillars-grid" id="pillars-grid">
+      <!-- Loaded from Supabase -->
+    </div>
+  </div>
+</section>
+
+<!-- Email CTA -->
+<section class="email-cta">
+  <div class="email-inner">
+    <h2>Three Times a Week</h2>
+    <p>Practical Stoic philosophy in your inbox. Free. No noise.</p>
+    <form class="email-form" id="pillars-email-form" onsubmit="submitEmail(event, 'pillars-email-form')">
+      <input type="email" placeholder="your@email.com" required autocomplete="email" />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="email-disclaimer">No spam. Unsubscribe any time.</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Livestoically</div>
+      <p>Practical Stoic philosophy for overthinkers. One concept. One action. Under ten minutes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Pillars</h4>
+      <ul id="footer-pillar-links"></ul>
+    </div>
+    <div class="footer-col">
+      <h4>Site</h4>
+      <ul>
+        <li><a href="start.html">Start here</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="/privacy/">Privacy policy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footer-year"></span> Livestoically.</span>
+    <span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span>
+  </div>
+</footer>
+
+<div class="search-overlay" id="search-overlay">
+  <div class="search-box">
+    <input type="search" id="search-input" placeholder="Search articles…" autocomplete="off" />
+    <div id="search-results"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="scripts/intent.js" defer></script>
+<script src="scripts/email.js"  defer></script>
+<script src="scripts/search.js" defer></script>
+<script>
+const SUPABASE_URL      = 'https://ixyzcxugmdvmhcpbinyf.supabase.co';
+const SUPABASE_ANON_KEY = 'REPLACE_WITH_SUPABASE_ANON_KEY';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+const PILLAR_META = {
+  'self-discipline':    { icon: '💪', desc: 'Not willpower. The quiet consistency of someone who has decided.' },
+  'your-emotions':      { icon: '❤️', desc: 'What you feel is real. What you do with it is yours.' },
+  'people-connection':  { icon: '🤝', desc: 'The people around you shape your mind more than any book.' },
+  'work-purpose':       { icon: '🛠️', desc: 'Work that matters isn\'t found. It\'s built.' },
+  'time-death':         { icon: '🕊️', desc: 'The clearest thinking happens when you remember how short this is.' },
+  'control-letting-go': { icon: '⚖️', desc: 'The things you can\'t control cost you the most energy.' },
+  'how-you-think':      { icon: '🧠', desc: 'Your thoughts are not facts. But they shape every decision.' },
+  'hardship-recovery':  { icon: '🎯', desc: 'Hard things either break you or clarify you. Usually both.' },
+  'stillness-noise':    { icon: '🌱', desc: 'The world is louder than ever. Stillness is a practice now.' },
+};
+
+async function loadPillars() {
+  const { data } = await sb.from('pillars')
+    .select('id, name, slug, description, article_count')
+    .order('display_order');
+
+  const pillars = data && data.length > 0 ? data : Object.entries(PILLAR_META).map(([slug, m]) => ({
+    slug, name: slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase()),
+    description: m.desc, article_count: 0,
+  }));
+
+  document.getElementById('pillars-grid').innerHTML = pillars.map(p => {
+    const meta = PILLAR_META[p.slug] || { icon: '◉' };
+    return `
+      <a href="/${p.slug}/" class="pillar-card">
+        <div class="pillar-icon">${meta.icon}</div>
+        <div class="pillar-name">${p.name}</div>
+        <p class="pillar-desc">${p.description || meta.desc || ''}</p>
+        <div class="pillar-count">${p.article_count || 0} Articles</div>
+      </a>`;
+  }).join('');
+
+  document.getElementById('footer-pillar-links').innerHTML = pillars.slice(0, 5).map(p =>
+    `<li><a href="/${p.slug}/">${p.name}</a></li>`
+  ).join('') + `<li><a href="pillars.html">All pillars →</a></li>`;
+}
+
+function openSearch() {
+  document.getElementById('search-overlay').classList.add('open');
+  document.getElementById('search-input').focus();
+}
+document.getElementById('search-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('search-overlay'))
+    document.getElementById('search-overlay').classList.remove('open');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('search-overlay').classList.remove('open');
+});
+
+loadPillars();
+
+// Mobile menu toggle
+const navToggle = document.getElementById('nav-toggle');
+const navMobile = document.getElementById('nav-mobile');
+
+if (navToggle && navMobile) {
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navMobile.classList.toggle('active');
+  });
+
+  // Close menu when link clicked
+  navMobile.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navMobile.classList.remove('active');
+    });
+  });
+}
+</script>
+</body>
+</html>

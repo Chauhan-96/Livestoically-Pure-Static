@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Practical Stoic philosophy for overthinkers. One concept. One action. Under ten minutes.">
+  <title>Livestoically — Practical Stoicism for Overthinkers</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════
+       LIVESTOICALLY PREMIUM — HOMEPAGE
+       Design principles: Hierarchy, Depth, Color Harmony, Micro-interactions
+       ═══════════════════════════════════════════════════════════ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #F7F5F0;
+      --surface: #FFFFFF;
+      --surface-secondary: #FAFAF8;
+      --text: #1C1C1A;
+      --text-secondary: #2A2A27;
+      --muted: #6B6860;
+      --muted-light: #9A9490;
+      --border: #E8E4DC;
+      --border-light: #F0EEEA;
+      --accent: #4A7C59;
+      --accent-light: #EEF5F1;
+      --accent-dark: #3A6347;
+      --accent-muted: #7A9C8A;
+
+      --font-head: 'Playfair Display', serif;
+      --font-body: 'Lora', serif;
+      --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+
+      --shadow-sm: 0 1px 2px rgba(28, 28, 26, 0.05);
+      --shadow-md: 0 4px 12px rgba(28, 28, 26, 0.08);
+      --shadow-lg: 0 12px 24px rgba(28, 28, 26, 0.12);
+      --shadow-xl: 0 20px 40px rgba(28, 28, 26, 0.15);
+
+      --transition-fast: 0.15s ease-out;
+      --transition-base: 0.25s ease-out;
+      --transition-slow: 0.4s ease-out;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ NAVIGATION */
+
+    .site-nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 48px;
+    }
+
+    .nav-links a {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-btn {
+      font-family: var(--font-ui);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 24px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-btn:hover {
+      background: var(--accent-dark);
+      border-color: var(--accent-dark);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HERO */
+
+    .hero {
+      background: var(--surface);
+      padding: 120px 40px 100px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--accent-light);
+      border-radius: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(42px, 8vw, 72px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--text);
+      letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: 20px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 48px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 32px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all var(--transition-base);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--accent-dark);
+      transition: left var(--transition-fast);
+      z-index: -1;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--text);
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all var(--transition-base);
+    }
+
+    .btn-secondary:hover {
+      background: var(--text);
+      color: white;
+      transform: translateY(-2px);
+      border-color: var(--text);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ HOW IT WORKS */
+
+    .how-it-works {
+      padding: 100px 40px;
+      background: var(--bg);
+    }
+
+    .how-it-works-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-head);
+      font-size: clamp(36px, 6vw, 52px);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-header p {
+      font-family: var(--font-body);
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      padding: 48px 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-base);
+    }
+
+    .step-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px);
+    }
+
+    .step-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .step-number {
+      font-family: var(--font-head);
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 16px;
+      line-height: 1;
+    }
+
+    .step-card h3 {
+      font-family: var(--font-head);
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .step-card p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ PILLARS */
+
+    .pillars {
+      padding: 100px 40px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .pillars-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .pillar-card {
+      background: var(--bg);
+      padding: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pillar-card:hover {
+      background: var(--surface);
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent-light);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .pillar-card h3 {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .pillar-card p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .pillar-count {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: auto;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ RECENT ARTICLES */
+
+    .recent {
+      padding: 100px 40px;
+      background: var(--bg);
+    }
+
+    .recent-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .article-card {
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: all var(--transition-base);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-6px);
+    }
+
+    .article-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-muted) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      transition: transform var(--transition-base);
+    }
+
+    .article-card:hover .article-image {
+      transform: scale(1.05);
+    }
+
+    .article-content {
+      padding: 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-category {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .article-card h3 {
+      font-family: var(--font-head);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .article-meta {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: var(--muted-light);
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ EMAIL CTA */
+
+    .email-section {
+      padding: 80px 40px;
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-secondary) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .email-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .email-section h2 {
+      font-family: var(--font-head);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .email-section p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .email-form input {
+      flex: 1;
+      padding: 14px 20px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--text);
+      transition: all var(--transition-fast);
+    }
+
+    .email-form input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-light);
+    }
+
+    .email-form input::placeholder {
+      color: var(--muted-light);
+    }
+
+    .email-form button {
+      padding: 14px 32px;
+      font-family: var(--font-ui);
+      font-size: 14px;
+      font-weight: 700;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      box-shadow: var(--shadow-md);
+      white-space: nowrap;
+    }
+
+    .email-form button:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .email-disclaimer {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      color: var(--muted-light);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ FOOTER */
+
+    .footer {
+      background: var(--text-secondary);
+      color: #999;
+      padding: 60px 40px 30px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-brand h3 {
+      font-family: var(--font-head);
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.7;
+      color: #888;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-ui);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      color: #888;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ RESPONSIVE */
+
+    @media (max-width: 768px) {
+      .nav-inner { padding: 16px 20px; }
+      .nav-links { gap: 24px; }
+      .hero { padding: 80px 20px 60px; }
+      .hero h1 { font-size: 42px; }
+      .section-header { margin-bottom: 60px; }
+      .steps-grid { gap: 20px; }
+      .step-card { padding: 32px 24px; }
+      .email-form { flex-direction: column; }
+      .email-form button { width: 100%; }
+      .pillars { padding: 80px 20px; }
+      .recent { padding: 80px 20px; }
+      .email-section { padding: 60px 20px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Livestoically</a>
+    <ul class="nav-links">
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#articles">Articles</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="nav-btn">Membership</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Practical Stoic Philosophy</div>
+    <h1>Clarity Through Simplicity</h1>
+    <p class="hero-subtitle">One concept per article. One actionable step. Takes less than ten minutes. For people who think too much.</p>
+    <div class="hero-cta">
+      <button class="btn-primary">Read Free Articles</button>
+      <button class="btn-secondary">Join Community</button>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="how">
+  <div class="how-it-works-inner">
+    <div class="section-header">
+      <h2>How It Works</h2>
+      <p>A framework for clarity that actually sticks.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Learn One Idea</h3>
+        <p>A single Stoic concept explained in plain English. No history. No philosophy jargon. Just clarity.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Take One Action</h3>
+        <p>A concrete step you can take today. Under ten minutes. Designed to build your practice.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Integrate Over Time</h3>
+        <p>Articles are connected by emotional sequence. Each one builds on what came before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="pillars-inner">
+    <div class="section-header">
+      <h2>Learn By Pillar</h2>
+      <p>Nine core areas of practical Stoic philosophy.</p>
+    </div>
+    <div class="pillars-grid">
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">🧠</div>
+        <h3>How You Think</h3>
+        <p>Master your mind before it masters you.</p>
+        <div class="pillar-count">24 articles</div>
+      </a>
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">⚖️</div>
+        <h3>Control & Letting Go</h3>
+        <p>Know what's yours to control.</p>
+        <div class="pillar-count">18 articles</div>
+      </a>
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">💪</div>
+        <h3>Self-Discipline</h3>
+        <p>Build a practice that sticks.</p>
+        <div class="pillar-count">21 articles</div>
+      </a>
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">❤️</div>
+        <h3>Your Emotions</h3>
+        <p>Understand before you react.</p>
+        <div class="pillar-count">19 articles</div>
+      </a>
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">🛠️</div>
+        <h3>Work & Purpose</h3>
+        <p>Why you do what you do.</p>
+        <div class="pillar-count">20 articles</div>
+      </a>
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">🤝</div>
+        <h3>People & Connection</h3>
+        <p>How to relate without losing yourself.</p>
+        <div class="pillar-count">17 articles</div>
+      </a>
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">🎯</div>
+        <h3>Adversity & Resilience</h3>
+        <p>When things don't go as planned.</p>
+        <div class="pillar-count">23 articles</div>
+      </a>
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">🌱</div>
+        <h3>Growth & Wisdom</h3>
+        <p>Become better at becoming better.</p>
+        <div class="pillar-count">22 articles</div>
+      </a>
+      <a href="#" class="pillar-card">
+        <div class="pillar-icon">🕊️</div>
+        <h3>Peace & Acceptance</h3>
+        <p>What freedom actually means.</p>
+        <div class="pillar-count">20 articles</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT ARTICLES -->
+<section class="recent" id="articles">
+  <div class="recent-inner">
+    <div class="section-header">
+      <h2>Latest Articles</h2>
+      <p>New concepts every Monday, Wednesday, Friday.</p>
+    </div>
+    <div class="articles-grid">
+      <a href="#" class="article-card">
+        <div class="article-image">[Article image]</div>
+        <div class="article-content">
+          <div class="article-category">How You Think</div>
+          <h3>Stop Waiting For Permission</h3>
+          <div class="article-meta">7 min read · 1,847 words</div>
+        </div>
+      </a>
+      <a href="#" class="article-card">
+        <div class="article-image">[Article image]</div>
+        <div class="article-content">
+          <div class="article-category">Control & Letting Go</div>
+          <h3>The Stoic View of Luck</h3>
+          <div class="article-meta">6 min read · 1,523 words</div>
+        </div>
+      </a>
+      <a href="#" class="article-card">
+        <div class="article-image">[Article image]</div>
+        <div class="article-content">
+          <div class="article-category">Your Emotions</div>
+          <h3>Why You Feel What You Feel</h3>
+          <div class="article-meta">8 min read · 2,104 words</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL CTA -->
+<section class="email-section">
+  <div class="email-inner">
+    <h2>Three Times a Week</h2>
+    <p>Practical Stoic philosophy in your inbox. Free. No noise.</p>
+    <form class="email-form" onsubmit="alert('Thanks for subscribing!'); return false;">
+      <input type="email" placeholder="your@email.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="email-disclaimer">No spam. Unsubscribe any time.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Livestoically</h3>
+      <p>Practical Stoic philosophy for overthinkers. One concept. One action. Under ten minutes.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Content</h4>
+      <ul>
+        <li><a href="#">All Pillars</a></li>
+        <li><a href="#">Recent Articles</a></li>
+        <li><a href="#">Start Here</a></li>
+        <li><a href="#">Archive</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#">Membership</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Livestoically. All rights reserved.</span>
+    <span>Built with intention.</span>
+  </div>
+</footer>
+
+</body>
+</html>
